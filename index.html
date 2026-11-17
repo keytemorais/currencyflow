@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CurrencyFlow: conversor de moedas com cotações atualizadas e histórico de conversões.">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <title>CurrencyFlow | Conversor de Moedas</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <a class="logo" href="#conversor">
+                <span class="logo-mark">C</span>
+                <span class="logo-name">Currency<span>Flow</span></span>
+                <span class="logo-tagline">Converta. Planeje. Viaje mais.</span>
+            </a>
+
+            <nav class="menu">
+                <a href="#conversor" class="active">
+                    <span class="nav-icon">⌂</span>
+                    Conversor
+                </a>
+
+                <a href="#historico">
+                    <span class="nav-icon">◷</span>
+                    Histórico
+                </a>
+
+                <a href="#sobre">
+                    <span class="nav-icon">ⓘ</span>
+                    Sobre
+                </a>
+            </nav>
+
+            <div class="sidebar-note">
+                <span class="travel-icon">✈</span>
+                <p>Planeje suas próximas experiências com mais praticidade.</p>
+                <a href="#conversor">Começar agora →</a>
+            </div>
+
+            <div class="sidebar-illustration">
+                <img src="./assets/Globo Financeiro Neon com Moedas (1).png"
+                    alt="Globo 3D com moedas internacionais">
+            </div>
+
+            <p class="sidebar-footer">CurrencyFlow · Projeto de portfólio</p>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="page-header">
+
+                <div class="header-text">
+                    <p class="eyebrow">FINANÇAS DE FORMA SIMPLES</p>
+
+                    <h1>Conversor de <span>Moedas</span></h1>
+
+                    <p>
+                        Sua ferramenta inteligente para converter moedas
+                        com taxas atualizadas.
+                    </p>
+                </div>
+
+                <div class="header-visual">
+                    <img class="header-illustration"
+                        src="./assets/mapamundi.png"
+                        alt="Mapa-múndi com avião representando viagens internacionais">
+                </div>
+
+                <div class="live-pill">
+                    <span class="live-dot"></span>
+                    Cotações ao vivo
+                </div>
+
+            </header>
+
+            <!-- ÁREA PRINCIPAL -->
+            <div class="dashboard-grid">
+
+                <!-- CONVERSOR -->
+                <section class="converter panel" id="conversor">
+
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">CONVERSÃO</p>
+                            <h2>Faça sua conversão</h2>
+                        </div>
+                    </div>
+
+                    <div class="currency-area">
+
+                        <!-- MOEDA DE ORIGEM -->
+                        <div class="currency-box">
+
+                            <label for="currency-from">De:</label>
+
+                            <select id="currency-from" class="currency-select">
+                                <option value="BRL">🇧🇷 Real Brasileiro (BRL)</option>
+                                <option value="USD">🇺🇸 Dólar Americano (USD)</option>
+                                <option value="EUR">🇪🇺 Euro (EUR)</option>
+                                <option value="GBP">🇬🇧 Libra Esterlina (GBP)</option>
+                                <option value="BTC">₿ Bitcoin (BTC)</option>
+                            </select>
+
+                            <label class="field-label" for="amount">
+                                Valor para converter
+                            </label>
+
+                            <div class="amount-field">
+                                <span class="amount-prefix" id="amount-prefix">R$</span>
+
+                                <input type="number" id="amount"
+                                    placeholder="Digite o valor"
+                                    min="0"
+                                    step="any"
+                                    inputmode="decimal">
+                            </div>
+
+                        </div>
+
+                        <!-- BOTÃO FUNCIONAL PARA INVERTER AS MOEDAS -->
+                        <button class="swap-button" type="button"
+                            aria-label="Inverter moedas"
+                            title="Inverter moedas">
+                            ⇄
+                        </button>
+
+                        <!-- MOEDA DE DESTINO -->
+                        <div class="currency-box destination-box">
+
+                            <label for="currency-to">Para:</label>
+
+                            <select id="currency-to" class="currency-select">
+                                <option value="USD">🇺🇸 Dólar Americano (USD)</option>
+                                <option value="BRL">🇧🇷 Real Brasileiro (BRL)</option>
+                                <option value="EUR">🇪🇺 Euro (EUR)</option>
+                                <option value="GBP">🇬🇧 Libra Esterlina (GBP)</option>
+                                <option value="BTC">₿ Bitcoin (BTC)</option>
+                            </select>
+
+                            <span class="field-label">Valor convertido</span>
+
+                            <div class="result-area" aria-live="polite">
+                                <span class="result-symbol">↗</span>
+                                <h2 id="result">--</h2>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="conversion-footer">
+                        <p id="rates-status" class="rates-status">
+                            Aguardando atualização das cotações...
+                        </p>
+
+                        <span class="secure-note">◎ Cálculo automático</span>
+                    </div>
+
+                </section>
+
+                <!-- COTAÇÕES RÁPIDAS -->
+                <aside class="quick-rates panel">
+
+                    <div class="section-heading compact-heading">
+                        <div>
+                            <p class="eyebrow">MERCADO</p>
+                            <h2>Cotações rápidas</h2>
+                        </div>
+
+                        <span class="trend-icon">↗</span>
+                    </div>
+
+                    <p class="rates-caption">Valor de 1 unidade em reais</p>
+
+                    <div id="quick-rates-list" class="quick-rates-list">
+
+                        <div class="rate-row">
+                            <span class="rate-currency">🇺🇸</span>
+                            <span class="rate-name">Dólar (USD)</span>
+                            <strong>Carregando...</strong>
+                        </div>
+
+                        <div class="rate-row">
+                            <span class="rate-currency">🇪🇺</span>
+                            <span class="rate-name">Euro (EUR)</span>
+                            <strong>Carregando...</strong>
+                        </div>
+
+                        <div class="rate-row">
+                            <span class="rate-currency">🇬🇧</span>
+                            <span class="rate-name">Libra (GBP)</span>
+                            <strong>Carregando...</strong>
+                        </div>
+
+                        <div class="rate-row">
+                            <span class="rate-currency">₿</span>
+                            <span class="rate-name">Bitcoin (BTC)</span>
+                            <strong>Carregando...</strong>
+                        </div>
+
+                    </div>
+
+                    <p class="rates-disclaimer">
+                        As cotações podem variar ao longo do dia.
+                    </p>
+
+                </aside>
+
+            </div>
+
+            <!-- HISTÓRICO -->
+            <section class="history-section panel" id="historico">
+
+                <div class="history-header">
+
+                    <div class="section-heading compact-heading">
+                        <div>
+                            <p class="eyebrow">SUAS ATIVIDADES</p>
+                            <h2>Últimas conversões</h2>
+                        </div>
+                    </div>
+
+                    <button id="clear-history" type="button">
+                        Limpar histórico
+                    </button>
+
+                </div>
+
+                <div id="history-list">
+                    <p class="empty-history">
+                        Nenhuma conversão realizada.
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- SOBRE -->
+            <section class="about-section panel" id="sobre">
+
+                <p class="eyebrow">SOBRE O PROJETO</p>
+
+                <h2>O que é o CurrencyFlow?</h2>
+
+                <p>
+                    O CurrencyFlow é uma aplicação web desenvolvida para tornar a conversão de moedas mais
+                    simples, rápida e intuitiva.
+
+                    Com uma interface moderna e funcional, a plataforma permite converter valores entre
+                    diferentes moedas, consultar cotações atualizadas por meio de uma API externa e acompanhar
+                    o histórico das conversões realizadas.
+                </p>
+
+                <p>
+                    O projeto foi desenvolvido utilizando HTML, CSS e JavaScript, aplicando conceitos de
+                    manipulação do DOM, consumo de APIs, armazenamento local com LocalStorage e validação de dados.
+
+                    Moedas disponíveis: Real Brasileiro (BRL), Dólar Americano (USD), Euro (EUR), Libra
+                    Esterlina (GBP) e Bitcoin (BTC).
+                </p>
+
+                <div class="tech-list">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>API externa (AwesomeAPI)</span>
+                    <span>LocalStorage</span>
+                </div>
+
+            </section>
+
+            <footer class="page-footer">
+                CurrencyFlow · Desenvolvido como projeto de portfólio
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO -->
+    <div class="modal-overlay" id="confirm-modal">
+
+        <div class="modal-box">
+
+            <span class="modal-icon">!</span>
+
+            <h2>Limpar histórico?</h2>
+
+            <p>
+                Tem certeza de que deseja apagar todas as conversões?
+                Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="modal-actions">
+
+                <button id="cancel-clear" type="button">
+                    Cancelar
+                </button>
+
+                <button id="confirm-clear" type="button">
+                    Sim, limpar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
